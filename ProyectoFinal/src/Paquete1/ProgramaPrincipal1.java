@@ -48,20 +48,7 @@ public class ProgramaPrincipal1 {
             // Se añade el partido a la lista de partidos
             listaPartidos.add(unPartido);
             
-            // Se calculan los puntos de cada equipo según el resultado del partido
-            if (unPartido.golesEquipo1 > unPartido.golesEquipo2) {
-            	unPartido.puntosEquipo1 = 3;
-            	unPartido.puntosEquipo2 = 0;
-             }
-            if (unPartido.golesEquipo1 < unPartido.golesEquipo2) {
-            	unPartido.puntosEquipo1 = 0;
-            	unPartido.puntosEquipo2 = 3;
-             }
-            if (unPartido.golesEquipo1 == unPartido.golesEquipo2) {
-            	unPartido.puntosEquipo1 = 1;
-            	unPartido.puntosEquipo2 = 1;
-             }
-            
+                    
         }
         
         // Se define la ruta del archivo de pronósticos y se lee línea por línea
@@ -82,10 +69,7 @@ public class ProgramaPrincipal1 {
             //Se asignan los equipos al partido
             unPartido.equipo1 = unEquipo1;
             unPartido.equipo2 = unEquipo2;
-            //Se asignan los goles al partido
-            unPartido.golesEquipo1 = Integer.parseInt(datos[1]);
-            unPartido.golesEquipo2 = Integer.parseInt(datos[2]);
-
+            
             //Se asignan los equipos al pronostico
             unPronostico.equipo1 = unEquipo1;
             unPronostico.equipo2 = unEquipo2;
@@ -94,33 +78,33 @@ public class ProgramaPrincipal1 {
             unPronostico.golesEquipo1 = Integer.parseInt(datos[1]);
             unPronostico.golesEquipo2 = Integer.parseInt(datos[2]);
             listaPronosticos.add(unPronostico);
-            
-          //Se asignan 1 punto al pronostico , si acierta el resultado final y 0 si no acierta.  
-            
-            
-            if (unPartido.golesEquipo1 > unPartido.golesEquipo2 && unPronostico.golesEquipo1 > unPronostico.golesEquipo2) {
-                unPronostico.puntosPronostico = 1;
-            }
-            if (unPartido.golesEquipo1 < unPartido.golesEquipo2 && unPronostico.golesEquipo1 < unPronostico.golesEquipo2) {
-                unPronostico.puntosPronostico = 1;
-            }
-            if (unPartido.golesEquipo1 == unPartido.golesEquipo2 && unPronostico.golesEquipo1 == unPronostico.golesEquipo2) {
-                unPronostico.puntosPronostico = 1;
-            }
+              
          }
             
-                                       
+        
+        //Se asignan 1 punto al pronostico , si acierta el resultado final y 0 si no acierta.                                  
     
-    for (int i = 0; i < listaPartidos.size(); i++) {
-     JOptionPane.showMessageDialog(null,listaPartidos.get(i).equipo1.nombre + " " + listaPartidos.get(i).golesEquipo1 + " " + listaPartidos.get(i).golesEquipo2 + " " + listaPartidos.get(i).equipo2.nombre);
-    }
-    
-    
-    for (int i = 0; i < listaPronosticos.size(); i++) {
-     JOptionPane.showMessageDialog(null,listaPronosticos.get(i).equipo1.nombre + " " + listaPronosticos.get(i).golesEquipo1 + " " + listaPronosticos.get(i).golesEquipo2 +" " + listaPronosticos.get(i).equipo2.nombre+" " + listaPronosticos.get(i).puntosPronostico);
-    }
-    
-    
+        for (int i = 0; i < listaPartidos.size() && i < listaPronosticos.size(); i++) {
+            
+            if (listaPartidos.get(i).golesEquipo1 >  listaPartidos.get(i).golesEquipo2 && listaPronosticos.get(i).golesEquipo1 > listaPronosticos.get(i).golesEquipo2) {
+                listaPronosticos.get(i).puntosPronostico =1; 
+                
+            }else if (listaPartidos.get(i).golesEquipo1 <  listaPartidos.get(i).golesEquipo2 && listaPronosticos.get(i).golesEquipo1 < listaPronosticos.get(i).golesEquipo2) {
+                listaPronosticos.get(i).puntosPronostico =1; 
+                
+            } else if (listaPartidos.get(i).golesEquipo1 ==  listaPartidos.get(i).golesEquipo2 && listaPronosticos.get(i).golesEquipo1 == listaPronosticos.get(i).golesEquipo2) {
+                listaPronosticos.get(i).puntosPronostico =1; 
+            }  
+                
+                 
+        
+        }
+        for (int i = 0; i < listaPartidos.size() && i < listaPronosticos.size(); i++) {
+            System.out.println(listaPartidos.get(i).equipo1.nombre + " " + listaPartidos.get(i).golesEquipo1 + " " + listaPartidos.get(i).golesEquipo2 + " " + listaPartidos.get(i).equipo2.nombre);
+            System.out.println(listaPronosticos.get(i).equipo1.nombre + " " + listaPronosticos.get(i).golesEquipo1 + " " + listaPronosticos.get(i).golesEquipo2 + " " + listaPronosticos.get(i).equipo2.nombre + " -->Puntos por acertar = " + listaPronosticos.get(i).puntosPronostico);
+           
+        }
+       
     }
 }
         

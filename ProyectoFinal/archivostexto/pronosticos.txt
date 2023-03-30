@@ -1,0 +1,4 @@
+Argentina 3 2 Arabia
+Mexico 1 2 Polonia
+Alemania 1 0 Portugal
+Espana 2 1 Croacia
